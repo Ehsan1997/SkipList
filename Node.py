@@ -4,7 +4,7 @@
 # This class is used by SortedLinkList, but is somewhat different to a regular link list node.
 
 class Node:
-  def __init__(self, value, next=None, down=None, prev=None):
+  def __init__(self, value, next=None, prev=None, down=None,):
     self.value = value
     self.next = next
     self.down = down
