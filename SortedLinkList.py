@@ -30,7 +30,7 @@ class SortedLinkList:
     node = self.start_node
     # Empty List
     if node.next is None:
-      new_node = Node(value, None, node)
+      new_node = Node(value, None, self.start_node)
       node.next = new_node
       return new_node
     # Iterate till the end or where the next element is larger/
