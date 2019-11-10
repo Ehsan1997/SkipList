@@ -9,7 +9,7 @@ This class is used by SortedLinkList, but is somewhat different to a regular lin
 Python doesn't provide it's own representation of LinkList, further we required a special type of Link list, where the values were inserted in a sorted order
 
 ## SkipList.py:
-SkipList Class and SkipListNode Class
+SkipList Class and SkipListNode Class  
 SkipListNode is a special node made for SkipList as each node represents a list on a level in the skiplist
 
 
