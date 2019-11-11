@@ -92,10 +92,14 @@ class SkipList:
         while current_node.value > value and current_node.prev:
           hops+=1
           current_node = current_node.prev
+          # If we get a none, we are done here.
+          if current_node is None: break
       # If current node is less in value, go to right
       else:
         while current_node.value < value and current_node.next:
           hops+=1
           current_node = current_node.next
+          # If we get a none, we are done here.
+          if current_node is None: break
 
     return 1 if current_node.value == value else 0, hops
