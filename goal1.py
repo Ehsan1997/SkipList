@@ -19,11 +19,11 @@ print ("Done inserting!!")
 
 # sl.print_list()
 start = time.time()
-print(f"Status: {sl.search(k)}")
+print(f"Status: {sl.search(k+1)}")
 end = time.time()
 print(f'Time1: {end - start}')
 
 start = time.time()
-print(f"Status: {sl.l1.ll.linear_search(k)}")
+print(f"Status: {sl.l1.ll.linear_search(k+1)}")
 end = time.time()
 print(f'Time2: {end - start}')

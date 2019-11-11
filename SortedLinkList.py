@@ -58,5 +58,7 @@ class SortedLinkList:
       hops+=1
       if node.value == value:
         return 1, hops
+      elif node.next.value > value:
+        return 0, hops
       node = node.next
     return 1 if node.value == value else 0, hops
