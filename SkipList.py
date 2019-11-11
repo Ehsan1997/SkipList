@@ -25,7 +25,7 @@ class SkipList:
 
   # Number of Levels
   def count_list(self):
-    n = 0
+    n = 1
     l = self.l1
     while l.next_level:
       n+=1
@@ -43,6 +43,8 @@ class SkipList:
         node = current_level.ll.insert(value)
       else:
         current_level.next_level = SkipListNode()
+        # Start pointer should point down to the level below
+        current_level.next_level.ll.start_node.down = current_level.ll.start_node
         current_level = current_level.next_level
         node = current_level.ll.insert(value)
       node.down = down_node
@@ -72,7 +74,7 @@ class SkipList:
   def search(self, value):
     # Number of hops
     hops = 0
-    current_node = self.max_level.ll.start_node.next
+    current_node = self.max_level.ll.start_node
     while current_node.value != value and current_node.down:
       hops+=1
       if current_node.next:
@@ -87,19 +89,8 @@ class SkipList:
     if current_node.value == value:
       return 1, hops
     else:
-      # If current node has greater value go to left
-      if current_node.value > value:
-        while current_node.value > value and current_node.prev:
-          hops+=1
-          current_node = current_node.prev
-          # If we get a none, we are done here.
-          if current_node is self.l1.ll.start_node: break
-      # If current node is less in value, go to right
-      else:
-        while current_node.value < value and current_node.next:
-          hops+=1
-          current_node = current_node.next
-          # If we get a none, we are done here.
-          if current_node is None: break
-
+      # Find the value at the right side.
+      current_node = current_node.next
+      while current_node.value < value and current_node.next:
+        current_node = current_node.next
     return 1 if current_node.value == value else 0, hops
