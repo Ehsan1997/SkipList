@@ -59,7 +59,6 @@ hops = []
 
 for elem in list_to_search:
   # f is element of found and h is element of hops
-  print(elem)
   f,h = sl.search(elem)
   found.append(f)
   hops.append(h)
