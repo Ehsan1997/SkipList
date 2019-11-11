@@ -10,7 +10,7 @@ for a in arr:
   sl.insert(a)
 sl.print_list()
 sl = SkipList()
-for i in range(10000):
+for i in range(100):
   k = randint(0, 100000)
   print(f'Inserting: {k}')
   sl.insert(k)

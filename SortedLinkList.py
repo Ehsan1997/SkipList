@@ -52,9 +52,11 @@ class SortedLinkList:
     # Return new node, so down pointer can be assigned
 
   def linear_search(self, value):
+    hops = 0
     node = self.start_node
     while node.next:
+      hops+=1
       if node.value == value:
-        return 1
+        return 1, hops
       node = node.next
-    return 1 if node.value == value else 0
+    return 1 if node.value == value else 0, hops

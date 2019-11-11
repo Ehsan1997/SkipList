@@ -58,8 +58,11 @@ class SkipList:
   # Search for existence of an element
   # 0 if not found and 1 if found
   def search(self, value):
+    # Number of hops
+    hops = 0
     current_node = self.max_level.ll.start_node.next
     while current_node.value != value and current_node.down:
+      hops+=1
       if current_node.next:
         if current_node.next.value > value:
           current_node = current_node.down
@@ -70,16 +73,17 @@ class SkipList:
 
     # If current_node value is equal to value
     if current_node.value == value:
-      return 1
+      return 1, hops
     else:
       # If current node has greater value go to left
       if current_node.value > value:
-        while current_node.value != value and current_node.prev:
+        while current_node.value > value and current_node.prev:
+          hops+=1
           current_node = current_node.prev
       # If current node is less in value, go to right
       else:
-        while current_node.value != value and current_node.next:
+        while current_node.value < value and current_node.next:
+          hops+=1
           current_node = current_node.next
 
-          
-    return 1 if current_node.value == value else 0
+    return 1 if current_node.value == value else 0, hops
