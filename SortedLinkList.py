@@ -8,6 +8,7 @@ class SortedLinkList:
   def __init__(self):
     self.start_node = Node(None, prev=None)
     
+    
   def print_list(self):
     node = self.start_node.next
     while node:

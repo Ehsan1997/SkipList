@@ -21,12 +21,15 @@ class SkipList:
     self.l1 = SkipListNode()
     # Highest Level
     self.max_level = self.l1
+
+
   # Number of Levels
   def count_list(self):
     n = 0
     l = self.l1
-    while l.next:
+    while l.next_level:
       n+=1
+      l = l.next_level
     return n
 
   def insert(self, value):
@@ -54,6 +57,15 @@ class SkipList:
       l.ll.print_list()
       l = l.next_level
       i+=1
+
+  def elem_count_each_level(self):
+    # A list containing count of elements on each level.
+    elem_count = []
+    current_list = self.l1
+    while current_list:
+      elem_count.append(current_list.ll.count())
+      current_list = current_list.next_level
+    return elem_count
   
   # Search for existence of an element
   # 0 if not found and 1 if found
