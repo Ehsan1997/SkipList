@@ -90,7 +90,13 @@ class SkipList:
       return 1, hops
     else:
       # Find the value at the right side.
-      current_node = current_node.next
+
+      # Go to next_node if it exists
+      if current_node.next:
+        hops+=1
+        current_node = current_node.next
+      # Loop to the next values
       while current_node.value < value and current_node.next:
+        hops+=1
         current_node = current_node.next
     return 1 if current_node.value == value else 0, hops
